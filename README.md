@@ -4,6 +4,7 @@
 
 1. `sudo apt install pandoc markdown`
 1. `git clone` this repo
+1. `mkdir -p ./site/posts`
 
 ## Write/Test
 

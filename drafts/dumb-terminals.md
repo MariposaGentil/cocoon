@@ -1,6 +1,6 @@
 % We Are the Dumb Terminals
 %
-% 2017-11-25
+% 2018-11-25
 
 How easy it is to Google anything nowadays; how close we can get to any knowledge we can think of; how nice that is.
 

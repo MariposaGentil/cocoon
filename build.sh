@@ -50,6 +50,7 @@ do
 		--smart --to=html5 ${root_file} -o ./site/$(basename ${root_file} .md).html
 done
 
+mkdir -p ./site/posts
 
 for post_file in $post_files
 do

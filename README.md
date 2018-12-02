@@ -4,15 +4,22 @@
 
 1. `sudo apt install pandoc markdown`
 1. `git clone` this repo
-1. `mkdir -p ./site/posts`
 
 ## Write/Test
 
-1. `cd ./site && python3 -m http.server`
-1. Open new terminal window in `./`
-1. `watch -n 1 ./build.sh`
+1. Add content to `./posts`
+1. Add front matter at the beginning of each post:
+    ```
+    % Title
+    % Author (optional, keep '%' even if empty)
+    % Date (YYYY-MM-DD format)
+    ```
+1. `./serve.sh`
+    - To also serve drafts in `./drafts`, use `--drafts`
 
 ## Deploy
 
-1. `git add ... ; git commit -m ... ; git push -u origin master`
-1. `./deploy.sh`
+1. Get all files situated:
+    - `git add ... ; git commit -m ... ; git push -u origin master`
+3. Build and push just `./site` files:
+    - `./deploy.sh`

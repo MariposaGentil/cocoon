@@ -18,6 +18,7 @@ fi
 # Drafts
 if [ ${drafts} = true ]
 then
+	rm -rf ./site/drafts/
 	mkdir -p ./site/drafts
 	draft_files=$(find ./drafts -maxdepth 1 -type f -name "*.md")
 

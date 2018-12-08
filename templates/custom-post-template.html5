@@ -13,7 +13,7 @@ $endif$
 $if(keywords)$
   <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$">
 $endif$
-  <title>$pagetitle$$if(title-prefix)$- $title-prefix$$endif$</title>
+  <title>$pagetitle$$if(title-prefix)$ - $title-prefix$$endif$</title>
   <style type="text/css">code{white-space: pre;}</style>
 $if(quotes)$
   <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>

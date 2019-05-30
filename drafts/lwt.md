@@ -1,0 +1,9 @@
+% Last Week Tonight is Dangerous
+% 
+% 2019-05-29
+
+HBO's *Last Week Tonight* is a show I original stopped watching for its repetitive jokes, but has now recently got me thinking about its format underpinnings a bit more. For those of who don't watch or know about the show, it's a late night comedy news program which recaps the major news stories of the previous week with an additional main topic at the end. These main segments bring to light issues that are less current, bigger in scope, and are arguably the main draw to the show. The show has its own YouTube channel where it uploads these segments which draw in several million views each week. It is these stories/essays/segments and the show's format which present danger in their effects on the audience.
+
+First and foremost, the show is entertainment. It airs late at night, sometimes has celebrity guests, and is not without gags and jokes presented by its host, John Oliver. Because it airs late at night (11pm on a Sunday), most people probably watch it the following night after work. The timing of this offers an escape from Monday and the friction of going from the weekend to the week. Despite being primarily entertainment, it is not without viewers who also use it as a source of news. One could argue that this category of viewers is small, but as mentioned earlier, these topics are often less current and more out of left field, leaving more viewers (informed or not about recent events) unaquainted with the domain. Already, there is some uneven footing; the show is segueing from the comfortable to the unknown and catching the viewer off-guard. This is a dance that has only started.
+
+The show's retelling of last week's news is not much different from any other parody news program such as *Saturday Night Live*'s Weekend Update. However, its main story is brought up last and the switch in tone is noticeable.

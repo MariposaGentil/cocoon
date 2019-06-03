@@ -2,9 +2,12 @@
 
 build_cmd=./build.sh
 
-if [ -n "${1}" ] && [ "${1}" = "--drafts" ]
+if [ -n "${1}" ]
 then
-	build_cmd="./build.sh --drafts"
+    if [ "${1}" = "--drafts" ]
+    then
+        build_cmd="./build.sh --drafts"
+    fi
 fi
 
 

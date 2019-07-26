@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="">
   <meta name="dcterms.date" content="2017-04-20">
   <title>A Better Google Music Manager - Charcoalbin</title>
   <style type="text/css">code{white-space: pre;}</style>
@@ -16,6 +17,7 @@
 <p><a href="../">home</a></p>
 <header>
 <h1 class="title">A Better Google Music Manager</h1>
+<p class="author"></p>
 <p class="date">2017-04-20</p>
 </header>
 <h2 id="background">Background</h2>
@@ -59,39 +61,39 @@
 <p>Luckily in Python, there is a function, <a href="https://docs.python.org/3/library/os.path.html#os.path.getctime">getctime()</a>, in the built-in <code>os.path</code> module that allows me to extract the file creation (read as ‘date downloaded’) time. File modification time is what came to mind originally, but every time a track’s tags are changed, the file gets modified. I only care about basic tags (album artist, album) when browsing the Google Play Music app, so as long as those tags are there upon upload, I’m done with it, regardless of local tag changes. Because of this, creation time sounded like a more grounded data point.</p>
 <p>By using the <a href="https://github.com/simon-weber/gmusicapi">gmusicapi</a> library, which did the heavy-lifting for the Google Music API, the MVP of the project was completed. The user would specify a starting point–a date which the program would use as an anchor to find newer files–and then upload. Upon finishing, the program would reset the start time for the next upload session to the current date and time. That way, the next session could just pick up where the last one left off. I introduced a config so users could customize these start and end points to override the normal autonomous behavior.</p>
 <p>Main logic:</p>
-<pre class="py"><code>import os
-from Typing import List
+<div class="sourceCode"><pre class="sourceCode py"><code class="sourceCode python"><span class="im">import</span> os
+<span class="im">from</span> Typing <span class="im">import</span> List
 
-start = 1492646400.0  # 2017/04/20
-end = None
+start <span class="op">=</span> <span class="fl">1492646400.0</span>  <span class="co"># 2017/04/20</span>
+end <span class="op">=</span> <span class="va">None</span>
 
-def check_date(filepath: str) -&gt; bool:
+<span class="kw">def</span> check_date(filepath: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:
 
-    if start and end:
-        # Upload everything between start and end dates
-        # If no dates were specified in setup, upload everything
-        # Range: [start, end)
-        return start &lt;= os.path.getctime(filepath) &lt; end
-    else:
-        if start and not end:
-            # Upload everything starting from start date
-            # Range: [start, inf)
-            return start &lt;= os.path.getctime(filepath)
-        elif end and not start:
-            # Upload everything until end date
-            # Range: (inf, end)
-            return os.path.getctime(filepath) &lt; end
+    <span class="cf">if</span> start <span class="kw">and</span> end:
+        <span class="co"># Upload everything between start and end dates</span>
+        <span class="co"># If no dates were specified in setup, upload everything</span>
+        <span class="co"># Range: [start, end)</span>
+        <span class="cf">return</span> start <span class="op">&lt;=</span> os.path.getctime(filepath) <span class="op">&lt;</span> end
+    <span class="cf">else</span>:
+        <span class="cf">if</span> start <span class="kw">and</span> <span class="kw">not</span> end:
+            <span class="co"># Upload everything starting from start date</span>
+            <span class="co"># Range: [start, inf)</span>
+            <span class="cf">return</span> start <span class="op">&lt;=</span> os.path.getctime(filepath)
+        <span class="cf">elif</span> end <span class="kw">and</span> <span class="kw">not</span> start:
+            <span class="co"># Upload everything until end date</span>
+            <span class="co"># Range: (inf, end)</span>
+            <span class="cf">return</span> os.path.getctime(filepath) <span class="op">&lt;</span> end
 
 
-def get_new_files(filepath: str, exts: tuple, files: List[str] = []) -&gt; List[str]:
+<span class="kw">def</span> get_new_files(filepath: <span class="bu">str</span>, exts: <span class="bu">tuple</span>, files: List[<span class="bu">str</span>] <span class="op">=</span> []) <span class="op">-&gt;</span> List[<span class="bu">str</span>]:
 
-    with os.scandir(filepath) as itr:
-        for entry in itr:
-            if entry.is_dir():
+    <span class="cf">with</span> os.scandir(filepath) <span class="im">as</span> itr:
+        <span class="cf">for</span> entry <span class="kw">in</span> itr:
+            <span class="cf">if</span> entry.is_dir():
                 get_new_files(os.path.join(filepath, entry.name), exts, files)
-            elif entry.name.endswith(exts) and check_date(entry.path):
+            <span class="cf">elif</span> entry.name.endswith(exts) <span class="kw">and</span> check_date(entry.path):
                     files.append(entry.path)
-    return files</code></pre>
+    <span class="cf">return</span> files</code></pre></div>
 <h2 id="further-tinkering">Further Tinkering</h2>
 <p>After the MVP was completed, I wondered if I could optimize the runtime even further. Upon running the script with no new files, the search takes 20 seconds to traverse my music directory on a spinning hard drive. 20 seconds is pretty good considering it’s doing a depth-first search straight for the actual tracks, but what about a breath-first search?</p>
 <p>I have my library organized alphabetically into lettered folders so that <em>The Beatles</em> are under the <code>B/</code> directory. I reasoned that if files were added for The Beatles, then the <code>B/</code> folder would update its modification date and I could search through the 26 folders for any updates first instead of doing a full dive for the music files. If only a few letter folders were changed, that could decrease the searching time immensely, or so I hoped.</p>

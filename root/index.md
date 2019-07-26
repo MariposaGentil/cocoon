@@ -6,6 +6,8 @@ A blog about the little things[...](about.html)
 
 \ 
 
+[**Code Reviews - A Layered Workflow**](posts/code-review.html) \  <small>2019-07-25</small>
+
 [**We Are the Dumb Terminals**](posts/dumb-terminals.html) \  <small>2018-12-08</small>
 
 [**Getting Things Done: A Mental Checklist**](posts/getting-things-done.html) \  <small>2018-11-23</small>

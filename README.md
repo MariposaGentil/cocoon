@@ -5,7 +5,7 @@
 1. `sudo apt install pandoc markdown`
 1. `git clone` this repo
 
-## Write/Test
+## Write/Preview
 
 1. Add content to `./posts`
 1. Add front matter at the beginning of each post:

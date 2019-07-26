@@ -1,4 +1,4 @@
-% Code Reviews - A Layered Workflow
+% Code Reviews: A Layered Workflow
 % 
 % 2019-07-25
 

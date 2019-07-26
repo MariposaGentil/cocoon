@@ -6,7 +6,7 @@ A blog about the little things[...](about.html)
 
 \ 
 
-[**Code Reviews - A Layered Workflow**](posts/code-review.html) \  <small>2019-07-25</small>
+[**Code Reviews: A Layered Workflow**](posts/code-review.html) \  <small>2019-07-25</small>
 
 [**Last Week Tonight**](posts/lwt.html) \  <small>2019-06-13</small>
 

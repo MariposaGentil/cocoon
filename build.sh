@@ -28,7 +28,7 @@ then
     # Compile draft files and save to .site/drafts/
 	for draft_file in $draft_files
 	do
-		pandoc --template=./templates/custom-post-template.html5 --title-prefix="Charcoalbin" --css=/styling.max.css -V lang=en -V highlighting-css= --mathjax \
+		pandoc --template=./templates/custom-post-template.html5 --title-prefix="Charcoalbin" --css=/assets/css/styling.max.css -V lang=en -V highlighting-css= --mathjax \
 			--smart --to=html5 ${draft_file} -o ./site/drafts/$(basename ${draft_file} .md).html
 	done
 else
@@ -44,7 +44,13 @@ root_md_files=$(find ./root -maxdepth 1 -type f -name "*.md")
 post_files=$(find ./posts -maxdepth 1 -type f -name "*.md")
 
 
-# Copy site assets to .site/
+# Copy assets
+
+cp -r ./assets ./site/
+
+
+# Copy CNAME, favicon, css to .site/
+
 for root_non_md_file in $root_non_md_files
 do
 	cp ${root_non_md_file} ./site/$(basename ${root_non_md_file})
@@ -54,7 +60,7 @@ done
 # Compile root markdown files (index, about)
 for root_file in $root_md_files
 do
-	pandoc --css=/styling.max.css -V lang=en -V highlighting-css= --mathjax \
+	pandoc --css=/assets/css/styling.max.css -V lang=en -V highlighting-css= --mathjax \
 		--smart --to=html5 ${root_file} -o ./site/$(basename ${root_file} .md).html
 done
 
@@ -64,6 +70,6 @@ mkdir -p ./site/posts
 # Compile posts
 for post_file in $post_files
 do
-	pandoc --template=./templates/custom-post-template.html5 --title-prefix="Charcoalbin" --css=/styling.max.css -V lang=en -V highlighting-css= --mathjax \
+	pandoc --template=./templates/custom-post-template.html5 --title-prefix="Charcoalbin" --css=/assets/css/styling.max.css -V lang=en -V highlighting-css= --mathjax \
 		--smart --to=html5 ${post_file} -o ./site/posts/$(basename ${post_file} .md).html
 done

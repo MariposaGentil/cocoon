@@ -1,4 +1,4 @@
-% We Are the Dumb Terminals
+% Dumb Terminals
 %
 % 2018-12-08
 

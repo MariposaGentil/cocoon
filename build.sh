@@ -6,6 +6,7 @@ py_draft_arg=""
 
 
 # Parse args
+
 if [ -n ${1} ]
 then
     # Check for --drafts
@@ -18,6 +19,7 @@ fi
 
 
 # Drafts
+
 if [ ${drafts} = true ]
 then
     # Clean drafts dir
@@ -37,7 +39,9 @@ fi
 
 
 # Generate index.md
+
 python3 ./generate_index.py ${py_draft_arg} > ./root/index.md
+python3 ./generate_art_page.py ${py_draft_arg} > ./root/art.md
 
 root_non_md_files=$(find ./root -maxdepth 1 -type f -not -name "*.md")
 root_md_files=$(find ./root -maxdepth 1 -type f -name "*.md")
@@ -58,6 +62,7 @@ done
 
 
 # Compile root markdown files (index, about)
+
 for root_file in $root_md_files
 do
 	pandoc --css=/assets/css/styling.max.css -V lang=en -V highlighting-css= --mathjax \
@@ -68,6 +73,7 @@ mkdir -p ./site/posts
 
 
 # Compile posts
+
 for post_file in $post_files
 do
 	pandoc --template=./templates/custom-post-template.html5 --title-prefix="Charcoalbin" --css=/assets/css/styling.max.css -V lang=en -V highlighting-css= --mathjax \

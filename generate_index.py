@@ -53,7 +53,6 @@ def gen_md(file_details: dict):
 if __name__ == "__main__":
     args = parser.parse_args()
     files = parse_filename_details(args.include_drafts)
-    sorted_filenames = sorted(files, key=lambda f: files[f]["date"], reverse=True)
     result = gen_index_page(files)
     print(result)
 

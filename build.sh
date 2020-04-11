@@ -41,7 +41,6 @@ fi
 # Generate index.md
 
 python3 ./generate_index.py ${py_draft_arg} > ./root/index.md
-python3 ./generate_art_page.py ${py_draft_arg} > ./root/art.md
 
 root_non_md_files=$(find ./root -maxdepth 1 -type f -not -name "*.md")
 root_md_files=$(find ./root -maxdepth 1 -type f -name "*.md")

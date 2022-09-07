@@ -8,6 +8,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'MakinGlovem';
+    src: url('../fonts/makinglovem.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 /* normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
     font-family: sans-serif;
@@ -206,6 +212,14 @@ body {
     -ms-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto;
+}
+.body-dark {
+    background-color: #111;
+    color: #f8f8f8;
+}
+.body-clear {
+    background-color: #f8f8f8;
+    color: #111;
 }
 @media (max-width: 400px) {
     body {
@@ -510,7 +524,7 @@ figcaption {
 }
 
 #cocoon {
-    font-family: "ShadowedGermanica";
+    font-family: "MakinGlovem";
     font-weight: normal;
     font-size: 5em;
 }

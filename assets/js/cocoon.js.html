@@ -1,0 +1,35 @@
+<script>
+  let dark_theme = true;
+  if (prefers_dark_theme() != dark_theme){
+    switch_themes();
+  }
+
+  function prefers_dark_theme(){
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    if(event.matches != dark_theme){
+      switch_themes();
+    }
+  });
+
+  function switch_themes(){
+    let root_style = document.documentElement.style;
+    let root_comp_style = getComputedStyle(document.documentElement);
+    let target_theme = 'dark';
+    if(dark_theme)
+    {
+      target_theme = 'light';
+    }
+    root_style.setProperty(
+      '--theme-bg-color',
+      root_comp_style.getPropertyValue('--' + target_theme + '-theme-bg-color')
+    );
+    root_style.setProperty(
+      '--theme-content-color',
+      root_comp_style.getPropertyValue('--' + target_theme + '-theme-content-color')
+    );
+    dark_theme = !dark_theme;
+  }
+</script>

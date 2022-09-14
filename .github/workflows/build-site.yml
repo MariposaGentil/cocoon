@@ -28,6 +28,7 @@ jobs:
         git config --local user.name "$name"
     - name: Push to Github pages
       run: |
+        cd site/
         git add .
         git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}  Automated commit generated from Gihub acions in cocoon repo"
         git push

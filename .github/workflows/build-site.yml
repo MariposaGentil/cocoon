@@ -32,6 +32,7 @@ jobs:
         echo $(ls)
         echo $(git config user.name)
         echo $(git remote -v)
+        echo ${{secrets.PUSH_SECRET_KEY}}
 
 
 

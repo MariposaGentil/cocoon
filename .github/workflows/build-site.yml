@@ -16,9 +16,17 @@ jobs:
     - name: Install deps
       run: sudo apt install pandoc
     - name: Render site
+      run: exec ./build.sh
+    - name: Setup git config
       run: |
-        exec ./build.sh
-        ls
+        export email=$(git log -n 1 --pretty=format:%ae)
+        export name=$(git log -n 1 --pretty=format:%an)
+        git config --local user.email $email
+        git config --local user.name $name
+    - name: Auxiliary functions
+      run: |
+        echo $(ls site/)
+        echo $(git config user.name)
 
 
 

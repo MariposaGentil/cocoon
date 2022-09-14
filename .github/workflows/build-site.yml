@@ -15,23 +15,23 @@ jobs:
         credentials: https://${{ github.actor }}:${{ secrets.PAT }}@github.com
     - name: Install deps
       run: sudo apt install pandoc=2.5-3build2
-    - name: Render site
-      run: exec ./build.sh
     - name: Setup git config
       run: |
         export email=$(git log -n 1 --pretty=format:%ae)
         export name=$(git log -n 1 --pretty=format:%an)
         rm -rf .git
-        cd site && git init
-        git remote add origin https://github.com/MariposaGentil/MariposaGentil.github.io
+        mkdir site && cd site
+        git clone https://github.com/MariposaGentil/MariposaGentil.github.io
         git config --local user.email "$email"
         git config --local user.name "$name"
+    - name: Render site
+      run: exec ./build.sh
     - name: Push to Github pages
       run: |
         cd site/
         git add .
         git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}  Automated commit generated from Gihub acions in cocoon repo"
-        git push --set-upstream origin main
+        git push
     - name: Auxiliary functions
       run: |
         cd site/

@@ -34,6 +34,6 @@ jobs:
         git push
     - name: Auxiliary functions
       run: |
-        cd site/
-        echo $(ls)
+        if [ ${{ github.base_ref }} -eq 'master' ]; then export dst_folder=site/my_folder; else export dst_folder=site/; fi
+        echo $dst_folder
 

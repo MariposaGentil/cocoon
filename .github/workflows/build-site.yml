@@ -14,7 +14,7 @@ jobs:
       with:
         credentials: https://${{ github.actor }}:${{ secrets.PAT }}@github.com
     - name: Install deps
-      run: sudo apt install pandoc
+      run: sudo apt install pandoc=2.5
     - name: Render site
       run: exec ./build.sh
     - name: Setup git config
@@ -31,15 +31,9 @@ jobs:
         cd site/
         git add .
         git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}  Automated commit generated from Gihub acions in cocoon repo"
-        git push --set-upstream origin master
+        git push --set-upstream origin main
     - name: Auxiliary functions
       run: |
         cd site/
         echo $(ls)
-        echo $(git config user.name)
-        echo $(git remote -v)
-        echo $(git status)
-        echo $(git log)
-
-
 

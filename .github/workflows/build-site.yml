@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-      with:
-        persist-credentials: false
-        fetch-depth: 0
     - name: Install deps
       run: sudo apt install pandoc
     - name: Render site
@@ -28,6 +25,7 @@ jobs:
         git config --local user.name "$name"
     - name: Push to Github pages
       run: |
+        env
         cd site/
         git add .
         git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}  Automated commit generated from Gihub acions in cocoon repo"

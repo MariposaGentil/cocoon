@@ -21,12 +21,16 @@ jobs:
       run: |
         export email=$(git log -n 1 --pretty=format:%ae)
         export name=$(git log -n 1 --pretty=format:%an)
+        rm -rf .git
+        cd site && git init
+        git remote add origin https://github.com/MariposaGentil/MariposaGentil.github.io
         git config --local user.email $email
         git config --local user.name $name
     - name: Auxiliary functions
       run: |
-        echo $(ls site/)
+        echo $(ls)
         echo $(git config user.name)
+        echo $(git remote -v)
 
 
 

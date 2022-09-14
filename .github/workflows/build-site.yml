@@ -1,0 +1,23 @@
+name: build-site
+on:
+  push:
+    branches:
+      - 'main'
+      - 'develop'
+      - 'preview/**'
+jobs:
+  build-site:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        persist-credentials: false
+        fetch-depth: 0
+    - name: Render site
+      run: |
+        apt install pandoc
+        exec ./build.sh
+        ls
+
+
+

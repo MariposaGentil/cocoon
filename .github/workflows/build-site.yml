@@ -16,7 +16,7 @@ jobs:
       run: exec ./build.sh
     - name: Setup git config
       run: |
-        echo ${{ github.event.schedule.user.login }}
+        echo ${{ github.actor }}
         export email=$(git log -n 1 --pretty=format:%ae)
         export name=$(git log -n 1 --pretty=format:%an)
         rm -rf .git

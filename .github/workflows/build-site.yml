@@ -34,6 +34,6 @@ jobs:
         git push
     - name: Auxiliary functions
       run: |
-        if [ '${{ github.ref }}' -eq 'master' ]; then export dst_folder=site/my_folder; else export dst_folder=site/; fi
+        if [ '${{ github.ref }}' -eq 'master' ]; then export dst_folder=site; else export dst_folder=site/${{ github.ref }}; fi
         echo $dst_folder
 

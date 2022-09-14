@@ -14,7 +14,7 @@ jobs:
         persist-credentials: false
         fetch-depth: 0
     - name: Install deps
-      run: sudo apt install pandoc git
+      run: sudo apt install pandoc
     - name: Render site
       run: exec ./build.sh
     - name: Setup git config
@@ -24,8 +24,8 @@ jobs:
         rm -rf .git
         cd site && git init
         git remote add origin https://github.com/MariposaGentil/MariposaGentil.github.io
-        git config --local user.email $email
-        git config --local user.name $name
+        git config --local user.email "$email"
+        git config --local user.name "$name"
     - name: Auxiliary functions
       run: |
         echo $(ls)

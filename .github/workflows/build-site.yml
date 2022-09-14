@@ -28,6 +28,7 @@ jobs:
         git config --local user.name "$name"
     - name: Auxiliary functions
       run: |
+        cd site/
         echo $(ls)
         echo $(git config user.name)
         echo $(git remote -v)

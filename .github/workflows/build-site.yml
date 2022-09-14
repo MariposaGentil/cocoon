@@ -20,12 +20,11 @@ jobs:
         export name=$(git log -n 1 --pretty=format:%an)
         rm -rf .git
         cd site && git init
-        git remote add origin https://github.com/MariposaGentil/MariposaGentil.github.io
+        git remote add origin git@github.com:MariposaGentil/MariposaGentil.github.io
         git config --local user.email "$email"
         git config --local user.name "$name"
     - name: Push to Github pages
       run: |
-        env
         cd site/
         git add .
         git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}  Automated commit generated from Gihub acions in cocoon repo"

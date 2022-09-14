@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - uses: de-vri-es/setup-git-credentials@v2
+      with:
+        credentials: ${{ github.actor }}:${{ secrets.PAT }}@github.com
     - name: Install deps
       run: sudo apt install pandoc
     - name: Render site
@@ -20,7 +23,7 @@ jobs:
         export name=$(git log -n 1 --pretty=format:%an)
         rm -rf .git
         cd site && git init
-        git remote add origin ${{ github.actor }}:${{secrets.PAT}}@https://github.com/MariposaGentil/MariposaGentil.github.io
+        git remote add origin https://github.com/MariposaGentil/MariposaGentil.github.io
         git config --local user.email "$email"
         git config --local user.name "$name"
     - name: Push to Github pages

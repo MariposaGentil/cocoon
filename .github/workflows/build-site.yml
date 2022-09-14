@@ -20,8 +20,8 @@ jobs:
         export email=$(git log -n 1 --pretty=format:%ae)
         export name=$(git log -n 1 --pretty=format:%an)
         rm -rf .git
-        mkdir site && cd site
-        git clone https://github.com/MariposaGentil/MariposaGentil.github.io
+        git clone https://github.com/MariposaGentil/MariposaGentil.github.io ./site
+        cd site
         git config --local user.email "$email"
         git config --local user.name "$name"
     - name: Render site

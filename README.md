@@ -24,5 +24,3 @@
 3. Build and push just `./site` files:
     - `./deploy.sh`
 
----
-Test for github actions

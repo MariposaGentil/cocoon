@@ -13,9 +13,10 @@ jobs:
       with:
         persist-credentials: false
         fetch-depth: 0
+    - name: Install deps
+      run: sudo apt install pandoc
     - name: Render site
       run: |
-        apt install pandoc
         exec ./build.sh
         ls
 

@@ -39,8 +39,11 @@ jobs:
         if [ "${branch}" = 'master' ]; then export dst_folder=''; else export dst_folder="subsite/${branch}"; fi
         echo ${dst_folder}
         exec ./build.sh
+        echo 'Hello world'
         mkdir -p ${REPO_FOLDER}/${dst_folder}/
-        cp -r -v ${OUTPUT_SITE_FOLDER}/* ${REPO_FOLDER}/${dst_folder}/
+        echo $(ls ${OUTPUT_SITE_FOLDER})
+        echo $(ls ${REPO_FOLDER}/${dst_folder})
+        cp -r -v ${OUTPUT_SITE_FOLDER}/* ./${REPO_FOLDER}/${dst_folder}/
         echo $(ls ${REPO_FOLDER}/${dst_folder})
 
     - name: Push to Github pages

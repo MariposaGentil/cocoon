@@ -36,7 +36,7 @@ jobs:
     - name: Auxiliary functions
       run: |
         export branch=${{ github.ref }}
-        echo $branch
-        if [ '${{ github.ref }}' -eq 'master' ]; then export dst_folder=site; else export dst_folder=site/${ branch//'/'/- }; fi
+        branch=$(sed 's/refs-heads-/''/' <<< ${branch//'/'/-})
+        if [ '${{ github.ref }}' -eq 'master' ]; then export dst_folder=site; else export dst_folder=site/subsite/${branch}; fi
         echo $dst_folder
 

@@ -40,6 +40,7 @@ jobs:
         echo ${dst_folder}
         exec ./build.sh
         \cp -r ${OUTPUT_SITE_FOLDER}/* ${REPO_FOLDER}/${dst_folder}/
+        echo $(ls ${REPO_FOLDER}/${dst_folder})
 
     - name: Push to Github pages
       run: |

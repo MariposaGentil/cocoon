@@ -27,7 +27,7 @@ jobs:
 
     - name: Remove subsite folder
       run: |
-        export branch=${{ github.ref }}
+        export branch=${{ github.event.ref }}
         export branch=$(sed 's/refs-heads-/''/' <<< ${branch//'/'/-})
         export folder="subsites/${branch}"
         echo "Removing subsite ${folder}"

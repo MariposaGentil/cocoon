@@ -1,6 +1,6 @@
 # Cocoon
 
-A blog about the little things[...](about.html)
+A place where I feel like home[...](about.html)
 
 ---
 

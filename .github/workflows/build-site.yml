@@ -2,7 +2,7 @@ name: build-site
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
       - 'develop'
       - 'preview/**'
       - 'subsite/**'

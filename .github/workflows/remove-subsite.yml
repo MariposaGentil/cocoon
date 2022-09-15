@@ -10,6 +10,7 @@ jobs:
     env:
       REPO_FOLDER: 'cocoon'
     steps:
+    - uses: actions/checkout@v3
     - uses: de-vri-es/setup-git-credentials@v2
       with:
         credentials: https://${{ github.actor }}:${{ secrets.PAT }}@github.com

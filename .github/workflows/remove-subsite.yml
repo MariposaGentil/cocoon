@@ -1,9 +1,6 @@
 name: remove-subsite
 on:
-  delete:
-    branches:
-      - 'preview/**'
-      - 'subsite/**'
+  delete
 jobs:
   remove-subsite:
     runs-on: ubuntu-latest

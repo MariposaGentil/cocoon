@@ -6,6 +6,10 @@ on:
       - 'develop'
       - 'preview/**'
 jobs:
+  env:
+    - OUTPUT_SITE_FOLDER='site/'
+    - REPO_FOLDER='my-repo/'
+
   build-site:
     runs-on: ubuntu-latest
     steps:
@@ -20,23 +24,26 @@ jobs:
         export email=$(git log -n 1 --pretty=format:%ae)
         export name=$(git log -n 1 --pretty=format:%an)
         rm -rf .git
-        git clone https://github.com/MariposaGentil/MariposaGentil.github.io ./site
-        cd site
+        git clone https://github.com/MariposaGentil/MariposaGentil.github.io ${REPO_FOLDER}
+        cd ${REPO_FOLDER}
         git config --local user.email "$email"
         git config --local user.name "$name"
     - name: Render site
-      run: exec ./build.sh
+      run: |
+        export branch=${{ github.ref }}:
+        branch=$(sed 's/refs-heads-/''/' <<< ${branch//'/'/-})
+        if [ '${{ github.ref }}' -eq 'master' ]; then export dst_folder=''; else export dst_folder='subsite/${branch}'; fi
+        exec ./build.sh
+        \cp -r ${OUTPUT_SITE_FOLDER}/* ${REPO_FOLDER}/${dst_folder}/
     - name: Push to Github pages
       run: |
-        set +e
-        cd site/
+        cd my-repo
         git add .
+        set +e
         git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}  Automated commit generated from Gihub acions in cocoon repo"
         git push
     - name: Auxiliary functions
       run: |
-        export branch=${{ github.ref }}
-        branch=$(sed 's/refs-heads-/''/' <<< ${branch//'/'/-})
-        if [ '${{ github.ref }}' -eq 'master' ]; then export dst_folder=site; else export dst_folder=site/subsite/${branch}; fi
         echo $dst_folder
+        echo $(ls my-repo/)
 

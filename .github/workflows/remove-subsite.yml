@@ -1,0 +1,42 @@
+name: remove-subsite
+on:
+  delete:
+    branches:
+      - 'preview/**'
+      - 'subsite/**'
+jobs:
+  remove-subsite:
+    runs-on: ubuntu-latest
+    env:
+      REPO_FOLDER: 'cocoon'
+    steps:
+    - uses: de-vri-es/setup-git-credentials@v2
+      with:
+        credentials: https://${{ github.actor }}:${{ secrets.PAT }}@github.com
+
+    - name: Download cocoon-site
+      run: |
+        export email=$(git log -n 1 --pretty=format:%ae)
+        export name=$(git log -n 1 --pretty=format:%an)
+        rm -rf .git
+        git clone https://github.com/MariposaGentil/MariposaGentil.github.io ${REPO_FOLDER}
+        cd ${REPO_FOLDER}
+        git config --local user.email "$email"
+        git config --local user.name "$name"
+
+    - name: Remove subsite folder
+      run: |
+        export branch=${{ github.ref }}
+        export branch=$(sed 's/refs-heads-/''/' <<< ${branch//'/'/-})
+        export folder="subsites/${branch}"
+        echo "Removing subsite ${folder}"
+        rm -rf "${REPO_FOLDER}/${folder}"
+
+    - name: Push to cocoon-site
+      run: |
+        cd ${REPO_FOLDER}
+        git add .
+        git commit -a -m "Removed subsite ${{ github.ref }} from cocoon Automated commit generated from Gihub acions in cocoon repo"
+        git push
+
+

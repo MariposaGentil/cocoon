@@ -35,7 +35,7 @@ jobs:
     - name: Render site
       run: exec ./build.sh
 
-    - Copy site
+    - name: Copy site
       run: |
         export branch=${{ github.ref }}
         export branch=$(sed 's/refs-heads-/''/' <<< ${branch//'/'/-})

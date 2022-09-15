@@ -36,7 +36,7 @@ jobs:
       run: |
         export branch=${{ github.ref }}:
         export branch=$(sed 's/refs-heads-/''/' <<< ${branch//'/'/-})
-        if [ '${branch}' = 'master' ]; then export dst_folder=''; else export dst_folder='subsite/${branch}'; fi
+        if [ "${branch}" = 'master' ]; then export dst_folder=''; else export dst_folder="subsite/${branch}"; fi
         echo ${dst_folder}
         exec ./build.sh
         \cp -r ${OUTPUT_SITE_FOLDER}/* ${REPO_FOLDER}/${dst_folder}/
@@ -45,11 +45,6 @@ jobs:
       run: |
         cd ${REPO_FOLDER}
         git add .
-        set +e
         git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}  Automated commit generated from Gihub acions in cocoon repo"
         git push
 
-    - name: Auxiliary functions
-      run: |
-        echo $dst_folder
-        echo $(ls my-repo)

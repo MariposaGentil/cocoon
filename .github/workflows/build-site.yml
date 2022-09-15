@@ -6,11 +6,10 @@ on:
       - 'develop'
       - 'preview/**'
 jobs:
-  env:
-    OUTPUT_SITE_FOLDER: 'site/'
-    REPO_FOLDER: 'my-repo/'
-
   build-site:
+    env:
+      OUTPUT_SITE_FOLDER: 'site/'
+      REPO_FOLDER: 'my-repo/'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3

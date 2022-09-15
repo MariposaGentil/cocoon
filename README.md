@@ -1,8 +1,7 @@
+[![build-site](https://github.com/MariposaGentil/cocoon/actions/workflows/build-site.yml/badge.svg?branch=master)](https://github.com/MariposaGentil/cocoon/actions/workflows/build-site.yml)
+
 # Cocoon content
 This repo hosts the content for https://mariposagentil.github.io/ each time a new commit is created to either: master, develop or preview/**; the contents are rendered and commited to the blog
-
-# Building status
-[![build-site](https://github.com/MariposaGentil/cocoon/actions/workflows/build-site.yml/badge.svg?branch=master)](https://github.com/MariposaGentil/cocoon/actions/workflows/build-site.yml)
 
 ## Install
 

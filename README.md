@@ -1,4 +1,5 @@
-# Blog
+# Cocoon content
+This repo hosts the content for https://mariposagentil.github.io/ each time a new commit is created to either: master, develop or preview/**; the contents are rendered and commited to the blog
 
 ## Install
 

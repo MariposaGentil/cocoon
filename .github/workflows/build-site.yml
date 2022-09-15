@@ -34,7 +34,7 @@ jobs:
 
     - name: Render site
       run: |
-        export branch=${{ github.ref }}:
+        export branch=${{ github.ref }}
         export branch=$(sed 's/refs-heads-/''/' <<< ${branch//'/'/-})
         if [ "${branch}" = 'master' ]; then export dst_folder=''; else export dst_folder="subsite/${branch}"; fi
         echo ${dst_folder}

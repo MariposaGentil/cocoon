@@ -8,8 +8,8 @@ on:
 jobs:
   build-site:
     env:
-      OUTPUT_SITE_FOLDER: 'site/'
-      REPO_FOLDER: 'my-repo/'
+      OUTPUT_SITE_FOLDER: 'site'
+      REPO_FOLDER: 'my-repo'
 
     runs-on: ubuntu-latest
 
@@ -40,7 +40,7 @@ jobs:
         echo ${dst_folder}
         exec ./build.sh
         mkdir -p ${REPO_FOLDER}/${dst_folder}/
-        \cp -r ${OUTPUT_SITE_FOLDER}/* ${REPO_FOLDER}/${dst_folder}/
+        cp -r ${OUTPUT_SITE_FOLDER}/* ${REPO_FOLDER}/${dst_folder}/
         echo $(ls ${REPO_FOLDER}/${dst_folder})
 
     - name: Push to Github pages

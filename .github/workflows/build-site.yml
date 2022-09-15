@@ -7,8 +7,8 @@ on:
       - 'preview/**'
 jobs:
   env:
-    - OUTPUT_SITE_FOLDER='site/'
-    - REPO_FOLDER='my-repo/'
+    OUTPUT_SITE_FOLDER: 'site/'
+    REPO_FOLDER: 'my-repo/'
 
   build-site:
     runs-on: ubuntu-latest

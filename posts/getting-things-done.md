@@ -8,3 +8,4 @@
 	- Embrace the rough draft
 - Know thyself
     - Know when you are sinking too much time into something less important or are about to
+				- sthis is a test

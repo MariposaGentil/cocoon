@@ -76,7 +76,7 @@ do
 		--metadata pagetitle="Cocoon" \
 		--css=/assets/css/styling.max.css \
 		-H ./assets/js/cocoon.js.html \
-		-H ./assets/html/home_header.html5 \
+		-H ./assets/html/root_header.html5 \
 		-V lang=en \
 		-V highlighting-css= \
 		--mathjax \

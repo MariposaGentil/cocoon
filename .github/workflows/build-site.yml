@@ -34,7 +34,7 @@ jobs:
         git config --local user.name "$name"
 
     - name: Render site
-      run: exec ./build.sh
+      run: make build
 
     - name: Copy site
       run: |

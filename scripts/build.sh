@@ -3,6 +3,7 @@
 
 drafts=false
 py_draft_arg=""
+site_path="./site"  # TODO Move to arg
 
 
 # Parse args
@@ -23,11 +24,11 @@ fi
 if [ ${drafts} = true ]
 then
     # Clean drafts dir
-	rm -rf ./site/drafts/
-	mkdir -p ./site/drafts
+	rm -rf $site_path/drafts/
+	mkdir -p $site_path/drafts
 	draft_files=$(find ./drafts -maxdepth 1 -type f -name "*.md")
 
-    # Compile draft files and save to .site/drafts/
+    # Compile draft files and save to$site_path/drafts/
 	for draft_file in $draft_files
 	do
 		pandoc \
@@ -38,16 +39,16 @@ then
 			-V highlighting-css= \
 			--mathjax \
 			--to=html5 ${draft_file} \
-			-o ./site/drafts/$(basename ${draft_file} .md).html
+			-o $site_path/drafts/$(basename ${draft_file} .md).html
 	done
 else
-	rm -rf ./site/drafts
+	rm -rf $site_path/drafts
 fi
 
 
 # Generate index.md
 
-python3 ./generate_index.py ${py_draft_arg} > ./root/index.md
+python3 ./scripts/generate_index.py ${py_draft_arg} > ./root/index.md
 
 root_non_md_files=$(find ./root -maxdepth 1 -type f -not -name "*.md")
 root_md_files=$(find ./root -maxdepth 1 -type f -name "*.md")
@@ -56,14 +57,14 @@ post_files=$(find ./posts -maxdepth 1 -type f -name "*.md")
 
 # Copy assets
 
-cp -r ./assets ./site/
+cp -r ./assets $site_path/
 
 
-# Copy CNAME, favicon, css to .site/
+# Copy CNAME, favicon, css to$site_path/
 
 for root_non_md_file in $root_non_md_files
 do
-	cp ${root_non_md_file} ./site/$(basename ${root_non_md_file})
+	cp ${root_non_md_file} $site_path/$(basename ${root_non_md_file})
 done
 
 
@@ -81,10 +82,10 @@ do
 		-V highlighting-css= \
 		--mathjax \
 		--to=html5 ${root_file} \
-		-o ./site/$(basename ${root_file} .md).html
+		-o $site_path/$(basename ${root_file} .md).html
 done
 
-mkdir -p ./site/posts
+mkdir -p $site_path/posts
 
 
 # Compile posts
@@ -99,5 +100,5 @@ do
 		-V highlighting-css= \
 		--mathjax \
 		--to=html5 ${post_file} \
-		-o ./site/posts/$(basename ${post_file} .md).html
+		-o $site_path/posts/$(basename ${post_file} .md).html
 done

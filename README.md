@@ -5,8 +5,8 @@ This repo hosts the content for https://mariposagentil.github.io/ each time a ne
 
 ## Install
 
-1. `sudo apt install pandoc markdown`
-1. `git clone` this repo
+1. `git clone && cd [REPO_PATH]` this repo
+1. `./scripts/install_requirements.sh`
 
 ## Write/Preview
 
@@ -17,13 +17,15 @@ This repo hosts the content for https://mariposagentil.github.io/ each time a ne
     % Author (optional, keep '%' even if empty)
     % Date (YYYY-MM-DD format)
     ```
-1. `./serve.sh`
+1. `make smart_serve`
     - To also serve drafts in `./drafts`, use `--drafts`
 
-## Deploy
+## Makefile
+Checkout `Makefile` to get a list of the usual tasks
 
-1. Get all files situated:
-    - `git add ... ; git commit -m ... ; git push -u origin master`
-3. Build and push just `./site` files:
-    - `./deploy.sh`
+## Deploy
+1. Write a new commit
+1. Push changes
+    1. This will build and post your changes in the configured HOST
+1. Go to the configured HOST
 

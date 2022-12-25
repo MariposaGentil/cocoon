@@ -21,7 +21,9 @@ jobs:
         credentials: https://${{ github.actor }}:${{ secrets.PAT }}@github.com
 
     - name: Install deps
-      run: sudo apt install pandoc=2.5-3build2
+      run: |
+        sudo apt update
+        sudo apt install pandoc=2.5-3build2
 
     - name: Setup git config
       run: |

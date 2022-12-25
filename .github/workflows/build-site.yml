@@ -21,36 +21,17 @@ jobs:
         credentials: https://${{ github.actor }}:${{ secrets.PAT }}@github.com
 
     - name: Install deps
-      run: |
-        sudo apt install pandoc
+      run: ./scripts/install_requirements.sh
 
     - name: Setup git config
-      run: |
-        export email=$(git log -n 1 --pretty=format:%ae)
-        export name=$(git log -n 1 --pretty=format:%an)
-        rm -rf .git
-        git clone https://github.com/MariposaGentil/MariposaGentil.github.io ${REPO_FOLDER}
-        cd ${REPO_FOLDER}
-        git config --local user.email "$email"
-        git config --local user.name "$name"
+      run: ./scripts/setup_git_configuration.sh
 
     - name: Render site
       run: make build
 
     - name: Copy site
-      run: |
-        export branch=${{ github.ref }}
-        export branch=$(sed 's/refs-heads-/''/' <<< ${branch//'/'/-})
-        if [ "${branch}" = 'master' ]; then export dst_folder=''; else export dst_folder="subsites/${branch}"; fi
-        echo "Copiying site to ${REPO_FOLDER}/${dst_folder}"
-        mkdir  -p ${REPO_FOLDER}/${dst_folder}
-        cp -rv ${OUTPUT_SITE_FOLDER}/* ${REPO_FOLDER}/${dst_folder}
-        ls ${REPO_FOLDER}/${dst_folder}
+      run: ./scripts/move_site_to_branch.sh
 
     - name: Push to Github pages
-      run: |
-        cd ${REPO_FOLDER}
-        git add .
-        git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}  Automated commit generated from Gihub acions in cocoon repo"
-        git push
+      run: ./scripts/push_to_github_pages.sh
 

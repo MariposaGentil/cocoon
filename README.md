@@ -12,7 +12,7 @@ This repo hosts the content for https://mariposagentil.github.io/ each time a ne
 
 1. Add content to `./posts`
 1. Add front matter at the beginning of each post:
-    ```
+    ```hh
     % Title
     % Author (optional, keep '%' even if empty)
     % Date (YYYY-MM-DD format)

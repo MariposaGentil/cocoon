@@ -1,7 +1,6 @@
 name: remove-subsite
 on:
-  - workflow_dispatch
-  - delete
+  delete
 jobs:
   remove-subsite:
     runs-on: ubuntu-latest

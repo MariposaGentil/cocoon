@@ -1,6 +1,5 @@
 name: build-site
 on:
-  workflow_dispatch
   push:
     branches:
       - 'master'

@@ -30,8 +30,13 @@ jobs:
       run: make build
 
     - name: Copy site
-      run: ./scripts/move_site_to_branch.sh
+      run: |
+        export ENV_REF=${{ github.ref }}
+        ./scripts/move_site_to_branch.sh
 
     - name: Push to Github pages
-      run: ./scripts/push_to_github_pages.sh
+      run: |
+        export ENV_REF=${{ github.ref }}
+        export ENV_COMMIT_MSG=${{ env.CI_COMMIT_MESSAGE }}
+        ./scripts/push_to_github_pages.sh
 

@@ -1,12 +1,12 @@
 #!/bin/bash
 
-export branch=${{ github.ref }}
+export branch=${ENV_REF}
 export branch=$(sed 's/refs-heads-/''/' <<< ${branch//'/'/-})
 if [ "${branch}" = 'master' ]
 then
 	export dst_folder=''
 else
-	export dst_folder="subsites/${    branch}"
+	export dst_folder="subsites/${branch}"
 fi
 echo "Copiying site to ${REPO_FOLDER}/${dst_folder}"
 mkdir  -p ${REPO_FOLDER}/${dst_folder}

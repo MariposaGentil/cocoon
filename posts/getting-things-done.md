@@ -2,8 +2,6 @@
 %
 % 2018-11-23
 
-Test
-
 This post was originally written by: https://github.com/cofinley
 
 - Use the right tool for the job

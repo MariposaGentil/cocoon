@@ -19,7 +19,7 @@ jobs:
     - name: Remove subsite folder
       run: |
         export branch=${{ github.event.ref }}
-        ./scipts/remove_subsite_folder.sh
+        ./scripts/remove_subsite_folder.sh
     - name: Push to cocoon-site
       run: |
         export ENV_REF=${{ github.ref }}

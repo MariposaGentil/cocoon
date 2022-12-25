@@ -1,12 +1,12 @@
 name: build-site
 on:
-  - workflow_dispatch
-  - push:
-      branches:
-        - 'master'
-        - 'develop'
-        - 'preview/**'
-        - 'subsite/**'
+  workflow_dispatch
+  push:
+    branches:
+      - 'master'
+      - 'develop'
+      - 'preview/**'
+      - 'subsite/**'
 jobs:
   build-site:
     env:

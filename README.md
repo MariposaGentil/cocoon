@@ -5,7 +5,7 @@ This repo hosts the content for https://mariposagentil.github.io/ each time a ne
 
 ## Install
 
-1. `git clone && cd [REPO_PATH]` this repo
+1. `git clone https://github.com/MariposaGentil/cocoon && cd cocoon` this repo
 1. `./scripts/install_requirements.sh`
 
 ## Write/Preview

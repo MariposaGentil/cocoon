@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>$pagetitle$$if(title-prefix)$ - $title-prefix$$endif$</title>
   <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 $if(quotes)$
   <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
@@ -26,12 +27,12 @@ $endfor$
 </head>
 
 <body>
-
 $for(include-before)$
 $include-before$
 $endfor$
 
 $body$
+<p class="material-symbols-outlined change-theme">light_mode</p>
 
 $for(include-after)$
 $include-after$

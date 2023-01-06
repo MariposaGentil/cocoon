@@ -32,7 +32,7 @@ then
 	for draft_file in $draft_files
 	do
 		pandoc \
-			--template=./templates/custom-post-template.html5 \
+			--template=./templates/post.html5 \
 			--title-prefix="Cocoon" --css=/assets/css/styling.max.css \
 			-H ./assets/js/cocoon.js.html \
 			-V lang=en \
@@ -73,6 +73,7 @@ done
 for root_file in $root_md_files
 do
 	pandoc \
+		--template=./templates/index.html5 \
 		--standalone \
 		--metadata pagetitle="Cocoon" \
 		--css=/assets/css/styling.max.css \
@@ -93,7 +94,7 @@ mkdir -p $site_path/posts
 for post_file in $post_files
 do
 	pandoc \
-		--template=./templates/custom-post-template.html5 \
+		--template=./templates/post.html5 \
 		--title-prefix="Cocoon" --css=/assets/css/styling.max.css \
 		-H ./assets/js/cocoon.js.html \
 		-V lang=en \

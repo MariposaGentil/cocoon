@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html$if(lang)$ lang="$lang$"$endif$$if(dir)$ dir="$dir$"$endif$>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>$pagetitle$$if(title-prefix)$ - $title-prefix$$endif$</title>
+  <style type="text/css">code{white-space: pre;}</style>
+
+$if(quotes)$
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+$endif$
+
+$for(css)$
+  <link rel="stylesheet" href="$css$">
+$endfor$
+
+$if(math)$
+  $math$
+$endif$
+$for(header-includes)$
+  $header-includes$
+$endfor$
+
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+
+<body>
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+</body>
+</html>

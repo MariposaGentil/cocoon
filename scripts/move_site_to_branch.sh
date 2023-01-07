@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export branch=${ENV_REF}
-read -a split_branch <<< ${branch//'/'/-}
+read -a split_branch <<< ${branch//'/'/' '}
 if [ "${branch}" = 'master' ]
 then
 	export dst_folder=''

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export branch=${ENV_REF}
-export branch=$(sed 's/refs-heads-/''/' <<< ${branch//'/'/-})
 if [ "${branch}" = 'master' ]
 then
 	export dst_folder=''

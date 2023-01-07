@@ -17,10 +17,13 @@
 :root {
     --light-theme-bg-color: #fdf6e3;
     --light-theme-content-color: #002b36;
+    --light-theme-content-color-lighter: #D9CEAF;
     --dark-theme-bg-color: #111;
     --dark-theme-content-color: #f8f8f8;
+    --dark-theme-content-color-lighter: #464646;
     --theme-bg-color: #111;
     --theme-content-color: #f8f8f8;
+    --theme-content-color-lighter: #464646
 }
 /* normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
@@ -79,7 +82,7 @@ dfn {
 }
 h1 {
     font-size: 2em;
-    margin: 0.67em 0;
+    margin: 0.0em 0;
 }
 mark {
     background: #ff0;
@@ -527,4 +530,12 @@ figcaption {
     font-family: "MakinGlovem";
     font-weight: normal;
     font-size: 5em;
+}
+
+.change-theme {
+    width: 100%;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 1em;
+    color: var(--theme-content-color-lighter);
 }

@@ -1,35 +1,87 @@
 <script>
-  let dark_theme = true;
-  if (prefers_dark_theme() != dark_theme){
+let is_dark_theme = true;
+let cookie_theme_value = undefined;
+
+window.addEventListener("load", function () {
+  console.log("On load event");
+  setup_switch_theme_btn();
+
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", (event) => {
+      if (cookie_theme_value != undefined) {
+        console.log('Ignoring browser theme, cookie found');
+        return;
+      }
+      if (event.matches != is_dark_theme) {
+        switch_themes();
+      }
+    });
+  if (user_prefers_dark_theme() != is_dark_theme) {
     switch_themes();
   }
+});
 
-  function prefers_dark_theme(){
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+function reload_cookie_theme_value() {
+  cookies = document.cookie;
+  value = cookies
+    .split("; ")
+    .find((row) => row.startsWith("theme="))
+    ?.split("=")[1];
+
+  cookie_theme_value = value;
+}
+function user_prefers_dark_theme() {
+  reload_cookie_theme_value();
+  if (cookie_theme_value == undefined) {
+    return (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    );
+  } else {
+    return cookie_theme_value == "dark";
   }
-
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-    if(event.matches != dark_theme){
-      switch_themes();
-    }
+}
+function setup_switch_theme_btn() {
+  let btn = document.getElementsByClassName("change-theme")[0];
+  btn.addEventListener("click", function () {
+    switch_themes();
+    cookie = is_dark_theme ? "theme=dark;" : "theme=light;";
+    cookie += " SameSite=Strict; Path=/;";
+    document.cookie = cookie;
+    reload_cookie_theme_value();
   });
-
-  function switch_themes(){
-    let root_style = document.documentElement.style;
-    let root_comp_style = getComputedStyle(document.documentElement);
-    let target_theme = 'dark';
-    if(dark_theme)
-    {
-      target_theme = 'light';
-    }
-    root_style.setProperty(
-      '--theme-bg-color',
-      root_comp_style.getPropertyValue('--' + target_theme + '-theme-bg-color')
-    );
-    root_style.setProperty(
-      '--theme-content-color',
-      root_comp_style.getPropertyValue('--' + target_theme + '-theme-content-color')
-    );
-    dark_theme = !dark_theme;
+  if (is_dark_theme) {
+    btn.innerHTML = "light_mode";
+  } else {
+    btn.innerHTML = "dark_mode";
   }
+}
+function switch_themes() {
+  let root_style = document.documentElement.style;
+  let root_comp_style = getComputedStyle(document.documentElement);
+  let target_theme = "dark";
+  let btn = document.getElementsByClassName("change-theme")[0];
+  if (is_dark_theme) {
+    target_theme = "light";
+    btn.innerHTML = "dark_mode";
+  } else {
+    btn.innerHTML = "light_mode";
+  }
+  root_style.setProperty(
+    "--theme-bg-color",
+    root_comp_style.getPropertyValue("--" + target_theme + "-theme-bg-color")
+  );
+  root_style.setProperty(
+    "--theme-content-color",
+    root_comp_style.getPropertyValue(
+      "--" + target_theme + "-theme-content-color"
+    )
+  );
+  root_style.setProperty(
+    "--theme-content-color-lighter",
+    root_comp_style.getPropertyValue("--" + target_theme + "-theme-content-color-lighter")
+  );
+  is_dark_theme = !is_dark_theme;
+}
 </script>

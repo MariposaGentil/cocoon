@@ -539,3 +539,7 @@ figcaption {
     margin-top: 1em;
     color: var(--theme-content-color-lighter);
 }
+
+.test {
+    width: 100%;
+}

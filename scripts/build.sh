@@ -33,7 +33,7 @@ then
 	do
 		pandoc \
 			--template=./templates/post.html5 \
-			--title-prefix="Cocoon" --css=/assets/css/styling.max.css \
+			--title-prefix="Cocoon" --css=/css/styling.max.css \
 			-H ./assets/js/cocoon.js.html \
 			-V lang=en \
 			-V highlighting-css= \
@@ -56,7 +56,6 @@ post_files=$(find ./posts -maxdepth 1 -type f -name "*.md")
 
 
 # Copy assets
-
 cp -r ./assets $site_path/
 
 
@@ -76,7 +75,7 @@ do
 		--template=./templates/index.html5 \
 		--standalone \
 		--metadata pagetitle="Cocoon" \
-		--css=/assets/css/styling.max.css \
+		--css=/css/styling.max.css \
 		-H ./assets/js/cocoon.js.html \
 		-H ./assets/html/root_header.html5 \
 		-V lang=en \
@@ -95,7 +94,7 @@ for post_file in $post_files
 do
 	pandoc \
 		--template=./templates/post.html5 \
-		--title-prefix="Cocoon" --css=/assets/css/styling.max.css \
+		--title-prefix="Cocoon" --css=/css/styling.max.css \
 		-H ./assets/js/cocoon.js.html \
 		-V lang=en \
 		-V highlighting-css= \

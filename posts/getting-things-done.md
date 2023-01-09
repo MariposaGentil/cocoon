@@ -1,8 +1,6 @@
 % Getting Things Done: A Mental Checklist
-%
+% [cofinley](https://github.com/cofinley)
 % 2018-11-23
-
-This post was originally written by: https://github.com/cofinley
 
 - Use the right tool for the job
 	- The right tool is usually the one with the least friction (~Occam's Razor)

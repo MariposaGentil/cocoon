@@ -4,6 +4,8 @@
 drafts=false
 py_draft_arg=""
 site_path="./site"  # TODO Move to arg
+mkdir -p $site_path
+subsite_forder="/"
 
 
 # Parse args
@@ -18,9 +20,15 @@ then
 	fi
 fi
 
+if [ $branch ]
+then
+	if [ $branch != "master" ]
+	then
+		subsite_folder="/subsites/$branch"
+	fi
+fi
 
 # Drafts
-
 if [ ${drafts} = true ]
 then
     # Clean drafts dir
@@ -33,7 +41,7 @@ then
 	do
 		pandoc \
 			--template=./templates/post.html5 \
-			--title-prefix="Cocoon" --css=/css/styling.max.css \
+			--title-prefix="Cocoon" --css=$subsite_folder/assets/css/styling.max.css \
 			-H ./assets/js/cocoon.js.html \
 			-V lang=en \
 			-V highlighting-css= \
@@ -56,8 +64,8 @@ post_files=$(find ./posts -maxdepth 1 -type f -name "*.md")
 
 
 # Copy assets
-cp -r ./assets $site_path/
 
+cp -r ./assets $site_path/assets
 
 # Copy CNAME, favicon, css to$site_path/
 
@@ -75,7 +83,7 @@ do
 		--template=./templates/index.html5 \
 		--standalone \
 		--metadata pagetitle="Cocoon" \
-		--css=/css/styling.max.css \
+		--css=$subsite_folder/assets/css/styling.max.css \
 		-H ./assets/js/cocoon.js.html \
 		-H ./assets/html/root_header.html5 \
 		-V lang=en \
@@ -94,7 +102,7 @@ for post_file in $post_files
 do
 	pandoc \
 		--template=./templates/post.html5 \
-		--title-prefix="Cocoon" --css=/css/styling.max.css \
+		--title-prefix="Cocoon" --css=$subsite_folder/assets/css/styling.max.css \
 		-H ./assets/js/cocoon.js.html \
 		-V lang=en \
 		-V highlighting-css= \

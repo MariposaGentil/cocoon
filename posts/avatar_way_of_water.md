@@ -7,6 +7,7 @@
 - direcor: James Cameron
 - release date: Dec 16, 2022
 ```
+![](../assets/images/avatar_wow/banner.png)
 
 After James announced [**4** new Avatar movies in 2012](https://www.vulture.com/2012/05/james-cameron-avatar-business.html), it was easy for me to say that Avatar would be a over-exploded franchise.
 

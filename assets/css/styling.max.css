@@ -529,7 +529,7 @@ figcaption {
 #cocoon_reviews {
     font-family: "MakinGlovem";
     font-weight: normal;
-    font-size: 5em;
+    font-size: 3.5em;
 }
 
 .change-theme {
@@ -538,8 +538,4 @@ figcaption {
     text-align: center;
     margin-top: 1em;
     color: var(--theme-content-color-lighter);
-}
-
-.test {
-    width: 100%;
 }

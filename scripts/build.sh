@@ -44,7 +44,7 @@ then
 		xargs pandoc \
 			--template=./templates/post.html5 \
 			--title-prefix="Cocoon" --css=$subsite_folder/assets/css/styling.max.css \
-			-H $subsite_folder/assets/js/cocoon.js.html \
+			-H ./assets/js/cocoon.js.html \
 			-V lang=en \
 			-V highlighting-css= \
 			--mathjax \

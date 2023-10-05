@@ -1,4 +1,4 @@
 site:
-  title: 'cocoon'
+  title: 'cocoon-reviews'
   favicon: 'favicon.ico'
-  rootpath: '/'
+  rootpath: '/subsites/reviews'

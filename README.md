@@ -17,7 +17,7 @@ This repo hosts the content for https://mariposagentil.github.io/ each time a ne
     % Author (optional, keep '%' even if empty)
     % Date (YYYY-MM-DD format)
     ```
-1. `make smart_serve`
+1. `make smart_run`
     - To also serve drafts in `./drafts`, use `--drafts`
 
 ## Makefile

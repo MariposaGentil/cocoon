@@ -6,6 +6,7 @@ py_draft_arg=""
 site_path="./site"  # TODO Move to arg
 mkdir -p $site_path
 subsite_forder="/"
+settings="$(./scripts/load_yaml_settings.sh)"
 
 
 # Parse args
@@ -39,10 +40,11 @@ then
     # Compile draft files and save to$site_path/drafts/
 	for draft_file in $draft_files
 	do
-		pandoc \
+		echo $settings |\
+		xargs pandoc \
 			--template=./templates/post.html5 \
 			--title-prefix="Cocoon" --css=$subsite_folder/assets/css/styling.max.css \
-			-H ./assets/js/cocoon.js.html \
+			-H $subsite_folder/assets/js/cocoon.js.html \
 			-V lang=en \
 			-V highlighting-css= \
 			--mathjax \
@@ -79,7 +81,8 @@ done
 
 for root_file in $root_md_files
 do
-	pandoc \
+	echo $settings |\
+	xargs pandoc \
 		--template=./templates/index.html5 \
 		--standalone \
 		--metadata pagetitle="Cocoon" \
@@ -100,7 +103,8 @@ mkdir -p $site_path/posts
 
 for post_file in $post_files
 do
-	pandoc \
+	echo $settings |\
+	xargs pandoc \
 		--template=./templates/post.html5 \
 		--title-prefix="Cocoon" --css=$subsite_folder/assets/css/styling.max.css \
 		-H ./assets/js/cocoon.js.html \

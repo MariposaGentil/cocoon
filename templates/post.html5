@@ -36,7 +36,7 @@ $endif$
 $for(header-includes)$
   $header-includes$
 $endfor$
-<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="icon" type="image/x-icon" href="$main_site_rootpath$$main_site_favicon$">
 </head>
 <body>
 $for(include-before)$

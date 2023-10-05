@@ -1,0 +1,4 @@
+site:
+  title: 'cocoon'
+  favicon: 'favicon.ico'
+  rootpath: '/'

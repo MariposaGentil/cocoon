@@ -15,11 +15,11 @@
     font-style: normal;
 }
 :root {
-    --light-theme-bg-color: #ff0000;
+    --light-theme-bg-color: #fdf6e3;
     --light-theme-content-color: #002b36;
     --light-theme-content-color-lighter: #D9CEAF;
     --dark-theme-bg-color: #111;
-    --dark-theme-content-color: #00ff00;
+    --dark-theme-content-color: #f8f8f8;
     --dark-theme-content-color-lighter: #464646;
     --theme-bg-color: #111;
     --theme-content-color: #f8f8f8;

@@ -1,7 +1,7 @@
 % Avatar: The Way of Water
 % [Erik Tordera Bermejo](https://twitter.com/home)
 % Jan 11, 2023
-% ../assets/images/avatar_wow/banner.png
+% ./assets/images/avatar_wow/banner.png
 
 ```
 - title: Avatar, The Way of Water

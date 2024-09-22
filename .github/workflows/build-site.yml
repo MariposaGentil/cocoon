@@ -43,6 +43,6 @@ jobs:
         export branch=${{ github.ref }}
         export branch=$(./scripts/get_branch_folder.sh)
         export ENV_COMMIT_MSG=${{ env.CI_COMMIT_MESSAGE }}
-        export ENV_COMMIT_SHA=${{ CI_COMMIT_SHORT_SHA }} 
+        export ENV_COMMIT_SHA=${{ env.CI_COMMIT_SHORT_SHA }} 
         ./scripts/push_to_github_pages.sh
 

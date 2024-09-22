@@ -1,10 +1,11 @@
 % Avatar: The Way of Water
 % [Erik Tordera Bermejo](https://twitter.com/home)
 % Jan 11, 2023
+% ../assets/images/avatar_wow/banner.png
 
 ```
-- tile: Avatar, The Way of Water
-- direcor: James Cameron
+- title: Avatar, The Way of Water
+- director: James Cameron
 - release date: Dec 16, 2022
 ```
 ![](../assets/images/avatar_wow/banner.png)

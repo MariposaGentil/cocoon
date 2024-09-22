@@ -32,7 +32,9 @@ $for(include-before)$
 $include-before$
 $endfor$
 
+<div class="index-content">
 $body$
+</div>
 <p class="material-symbols-outlined change-theme">light_mode</p>
 
 $for(include-after)$

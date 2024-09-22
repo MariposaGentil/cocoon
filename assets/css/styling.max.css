@@ -107,6 +107,19 @@ sub {
 img {
     border: 0;
 }
+.index-content > p > a > img{
+    border: 20px;
+    padding: 0em 0em 2em 0em;
+    max-width: 100%;
+    max-height: 18em;
+    margin-left: 0;
+    border-radius: 5px;
+    filter: opacity(80%);
+    @media screen and (max-width: 599px){
+        height: 250px;
+        object-fit: cover;
+  }
+}
 svg:not(:root) {
     overflow: hidden;
 }

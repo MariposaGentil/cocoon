@@ -49,7 +49,8 @@ def gen_header_md():
 
 
 def gen_md(file_details: dict):
-    return "[**{title}**]({link}) \  <small>{date}</small>".format(title=file_details["title"], link=file_details["uri"], date=file_details["date"])  
+    item = "[**{title}**]({link}) \  <small>{date}</small>\n[![]({image})]({link})".format(title=file_details["title"], link=file_details["uri"], date=file_details["date"], image=file_details["image"])  
+    return item
 
 
 if __name__ == "__main__":

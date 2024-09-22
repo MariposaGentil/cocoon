@@ -111,6 +111,7 @@ do
 		-V lang=en \
 		-V highlighting-css= \
 		--mathjax \
-		--to=html5 ${post_file} \
-		-o $site_path/posts/$(basename ${post_file} .md).html
+		--from markdown \
+		-t html5 \
+		-o $site_path/posts/$(basename ${post_file} .md).html <(sed 's/%.*\image.*//g' ${post_file})
 done

@@ -1,4 +1,4 @@
 site:
   title: 'cocoon_journal'
   favicon: 'favicon.ico'
-  rootpath: '/'
+  rootpath: '/subsites/journal'

@@ -39,7 +39,9 @@ def gen_index_page(files):
     md_text = gen_header_md()
     sorted_filenames = sorted(files, key=lambda f: files[f]["date"], reverse=True)
     all_post_entries = map(gen_md, [files[f] for f in sorted_filenames])
+    md_text += "<div class=\"timeline\"><ul>"
     md_text += "\n\n".join(all_post_entries)
+    md_text += "</ul></div>"
     return md_text
 
 
@@ -49,12 +51,11 @@ def gen_header_md():
 
 
 def gen_md(file_details: dict):
-    return "[**{title}**]({link}) \  <small>{date}</small>".format(title=file_details["title"], link=file_details["uri"], date=file_details["date"])  
-
+    item = '<li><div class="timestamp">{date}</div><div class="item-title">[**{title}**]({link})</div></li>'.format(title=file_details["title"], link=file_details["uri"], date=file_details["date"])
+    return item
 
 if __name__ == "__main__":
     args = parser.parse_args()
     files = parse_filename_details(args.include_drafts)
     result = gen_index_page(files)
     print(result)
-

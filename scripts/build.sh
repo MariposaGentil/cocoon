@@ -85,8 +85,9 @@ do
 	xargs pandoc \
 		--template=./templates/index.html5 \
 		--standalone \
-		--metadata pagetitle="Cocoon" \
+		--metadata pagetitle="Cocoon_Journal" \
 		--css=$subsite_folder/assets/css/styling.max.css \
+		--css=$subsite_folder/assets/css/timeline.css \
 		-H ./assets/js/cocoon.js.html \
 		-H ./assets/html/root_header.html5 \
 		-V lang=en \

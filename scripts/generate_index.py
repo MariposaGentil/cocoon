@@ -28,6 +28,8 @@ def parse_filename_details(include_drafts):
                     details["title"] = line.replace("% ", '').strip()
                 elif i == 2 and line.startswith('%'):
                     details["date"] = line.replace("% ", '').strip()
+                elif i == 3 and line.startswith('%'):
+                    details["image"] = line.replace("% ", '').strip()
         files[filename] = details
     return files
 

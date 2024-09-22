@@ -1,6 +1,6 @@
 #!/bin/bash
 
-commit_prefix="Content commit ${ENV_COMMIT_MSG}"
+commit_prefix="Content commit ${ENV_COMMIT_SHA}"
 if [ $# -gt 0 ]
 then
 	if [ $1 = "--remove" ]

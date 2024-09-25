@@ -229,16 +229,28 @@ body {
         font-size: 14px;
         margin: 10px 10px 15px;
     }
+    .post-content {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
 }
 @media (min-width: 401px) and (max-width: 600px) {
     body {
         margin: 10px 10px 35px;
+    }
+    .post-content {
+        margin-left: 5px;
+        margin-right: 5px;
     }
 }
 @media (min-width: 601px) and (max-width: 900px) {
     body {
         font-size: 16px;
         margin: 20px 100px 45px;
+    }
+    .post-content {
+        margin-left: 70px;
+        margin-right: 70px;
     }
 }
 @media (min-width: 901px) and (max-width: 1800px) {
@@ -247,12 +259,20 @@ body {
         margin: 30px 200px 55px;
         max-width: 540px;
     }
+    .post-content {
+        margin-left: 150px;
+        margin-right: 150px;
+        max-width: 1200px;
+    }
 }
 @media (min-width: 1801px) {
     body {
         font-size: 18px;
         margin: 30px auto 65px;
         max-width: 620px;
+    }
+    .post-content {
+        max-width: 1400px;
     }
 }
 p {
@@ -526,16 +546,16 @@ figcaption {
     font-style: italic;
 }
 
-#cocoon {
-    font-family: "MakinGlovem";
-    font-weight: normal;
-    font-size: 5em;
-}
-
 .change-theme {
     width: 100%;
     font-size: 50px;
     text-align: center;
     margin-top: 1em;
     color: var(--theme-content-color-lighter);
+}
+
+#cocoon {
+    font-family: "MakinGlovem";
+    font-weight: normal;
+    font-size: 5em;
 }

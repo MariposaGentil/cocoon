@@ -230,8 +230,8 @@ body {
         margin: 10px 10px 15px;
     }
     .post-content {
-        margin-left: 5px;
-        margin-right: 5px;
+        margin-left: -5px;
+        margin-right: -5px;
     }
 }
 @media (min-width: 401px) and (max-width: 600px) {
@@ -239,8 +239,8 @@ body {
         margin: 10px 10px 35px;
     }
     .post-content {
-        margin-left: 5px;
-        margin-right: 5px;
+        margin-left: -5px;
+        margin-right: -5px;
     }
 }
 @media (min-width: 601px) and (max-width: 900px) {
@@ -249,8 +249,8 @@ body {
         margin: 20px 100px 45px;
     }
     .post-content {
-        margin-left: 70px;
-        margin-right: 70px;
+        margin-left: -70px;
+        margin-right: -70px;
     }
 }
 @media (min-width: 901px) and (max-width: 1800px) {
@@ -260,8 +260,6 @@ body {
         max-width: 540px;
     }
     .post-content {
-        margin-left: 150px;
-        margin-right: 150px;
         max-width: 1200px;
     }
 }

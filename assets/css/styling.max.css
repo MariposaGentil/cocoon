@@ -260,7 +260,9 @@ body {
         max-width: 540px;
     }
     .post-content {
-        max-width: 1200px;
+        body{
+            max-width: 1200px;
+        }
     }
 }
 @media (min-width: 1801px) {

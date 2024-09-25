@@ -225,32 +225,20 @@ body {
     hyphens: auto;
 }
 @media (max-width: 400px) {
-    .pre-post, .post-post {
+    .pre-post, .post-post, .post {
         font-size: 14px;
         margin: 10px 10px 15px;
     }
-    .post {
-        font-size: 14px;
-        margin: 10px 5px 15px;
-    }
 }
 @media (min-width: 401px) and (max-width: 600px) {
-    .pre-post, .post-post {
+    .pre-post, .post-post, .post {
         margin: 10px 10px 35px;
-    }
-    .post {
-        margin: 10px 5px 35px;
-
     }
 }
 @media (min-width: 601px) and (max-width: 900px) {
-    .pre-post, .post-post {
+    .pre-post, .post-post, .post {
         font-size: 16px;
         margin: 20px 100px 45px;
-    }
-    .post {
-        font-size: 16px;
-        margin: 20px 70px 45px;
     }
 }
 @media (min-width: 901px) and (max-width: 1800px) {
@@ -261,8 +249,8 @@ body {
     }
     .post {
         font-size: 17px;
-        margin: 30px 100px 55px;
-        max-width: 800px;
+        margin: 30px 150px 55px;
+        max-width: 650px;
     }
 }
 @media (min-width: 1801px) {
@@ -274,7 +262,7 @@ body {
     .post {
         font-size: 18px;
         margin: 30px auto 65px;
-        max-width: 900px;
+        max-width: 800px;
     }
 }
 p {

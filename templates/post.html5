@@ -68,7 +68,7 @@ $endif$
 
 <div class="post-content">
 $body$
-<div class="post-content">
+</div class="post-content">
 
 <p class="material-symbols-outlined change-theme">light_mode</p>
 

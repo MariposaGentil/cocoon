@@ -1,4 +1,6 @@
-[![build-site](https://github.com/MariposaGentil/cocoon/actions/workflows/build-site.yml/badge.svg?branch=master)](https://github.com/MariposaGentil/cocoon/actions/workflows/build-site.yml) [![Deploy](https://github.com/MariposaGentil/MariposaGentil.github.io/actions/workflows/static.yml/badge.svg)](https://github.com/MariposaGentil/MariposaGentil.github.io/actions/workflows/static.yml)****
+[![build-site](https://github.com/MariposaGentil/cocoon/actions/workflows/build-site.yml/badge.svg?branch=master)](https://github.com/MariposaGentil/cocoon/actions/workflows/build-site.yml) [![Deploy](https://github.com/MariposaGentil/MariposaGentil.github.io/actions/workflows/static.yml/badge.svg)](https://github.com/MariposaGentil/MariposaGentil.github.io/actions/workflows/static.yml)
+
+****
 
 # Cocoon content
 This repo hosts the content for https://mariposagentil.github.io/ each time a new commit is created to either: master, develop or preview/**; the contents are rendered and commited to the blog

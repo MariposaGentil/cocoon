@@ -27,6 +27,7 @@ $endfor$
 </head>
 
 <body>
+<div class='body-index'>
 $for(include-before)$
 $include-before$
 $endfor$
@@ -38,5 +39,6 @@ $for(include-after)$
 $include-after$
 $endfor$
 
+</div>
 </body>
 </html>

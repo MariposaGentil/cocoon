@@ -225,7 +225,7 @@ body {
     hyphens: auto;
 }
 @media (max-width: 400px) {
-    .pre-post .post-post {
+    .pre-post, .post-post {
         font-size: 14px;
         margin: 10px 10px 15px;
     }
@@ -235,7 +235,7 @@ body {
     }
 }
 @media (min-width: 401px) and (max-width: 600px) {
-    .pre-post .post-post {
+    .pre-post, .post-post {
         margin: 10px 10px 35px;
     }
     .post {
@@ -244,7 +244,7 @@ body {
     }
 }
 @media (min-width: 601px) and (max-width: 900px) {
-    .pre-post .post-post {
+    .pre-post, .post-post {
         font-size: 16px;
         margin: 20px 100px 45px;
     }
@@ -254,7 +254,7 @@ body {
     }
 }
 @media (min-width: 901px) and (max-width: 1800px) {
-    .pre-post .post-post {
+    .pre-post, .post-post {
         font-size: 17px;
         margin: 30px 200px 55px;
         max-width: 540px;
@@ -266,7 +266,7 @@ body {
     }
 }
 @media (min-width: 1801px) {
-    .pre-post .post-post {
+    .pre-post, .post-post {
         font-size: 18px;
         margin: 30px auto 65px;
         max-width: 620px;

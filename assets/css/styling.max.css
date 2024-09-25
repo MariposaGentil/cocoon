@@ -225,54 +225,56 @@ body {
     hyphens: auto;
 }
 @media (max-width: 400px) {
-    body {
+    .pre-post .post-post {
         font-size: 14px;
         margin: 10px 10px 15px;
     }
-    .post-content {
-        margin-left: -5px;
-        margin-right: -5px;
+    .post {
+        font-size: 14px;
+        margin: 10px 5px 15px;
     }
 }
 @media (min-width: 401px) and (max-width: 600px) {
-    body {
+    .pre-post .post-post {
         margin: 10px 10px 35px;
     }
-    .post-content {
-        margin-left: -5px;
-        margin-right: -5px;
+    .post {
+        margin: 10px 5px 35px;
+
     }
 }
 @media (min-width: 601px) and (max-width: 900px) {
-    body {
+    .pre-post .post-post {
         font-size: 16px;
         margin: 20px 100px 45px;
     }
-    .post-content {
-        margin-left: -70px;
-        margin-right: -70px;
+    .post {
+        font-size: 16px;
+        margin: 20px 70px 45px;
     }
 }
 @media (min-width: 901px) and (max-width: 1800px) {
-    body {
+    .pre-post .post-post {
         font-size: 17px;
         margin: 30px 200px 55px;
         max-width: 540px;
     }
-    .post-content {
-        body{
-            max-width: 1200px;
-        }
+    .post {
+        font-size: 17px;
+        margin: 30px 100px 55px;
+        max-width: 800px;
     }
 }
 @media (min-width: 1801px) {
-    body {
+    .pre-post .post-post {
         font-size: 18px;
         margin: 30px auto 65px;
         max-width: 620px;
     }
-    .post-content {
-        max-width: 1400px;
+    .post {
+        font-size: 18px;
+        margin: 30px auto 65px;
+        max-width: 900px;
     }
 }
 p {

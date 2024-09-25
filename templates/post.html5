@@ -39,6 +39,7 @@ $endfor$
 <link rel="icon" type="image/x-icon" href="$main_site_rootpath$$main_site_favicon$">
 </head>
 <body>
+<div class="pre-post">
 $for(include-before)$
 $include-before$
 $endfor$
@@ -65,16 +66,17 @@ $if(toc)$
 $toc$
 </nav>
 $endif$
-
-<div class="post-content">
+</div>
+</div>
+<div class="post">
 $body$
-</div class="post-content">
-
+</div>
+<div class="post-post">
 <p class="material-symbols-outlined change-theme">light_mode</p>
 
 $for(include-after)$
 $include-after$
 $endfor$
-
+</div>
 </body>
 </html>

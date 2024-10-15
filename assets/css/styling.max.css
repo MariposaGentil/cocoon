@@ -544,7 +544,7 @@ figcaption {
     color: var(--theme-content-color-lighter);
 }
 
-#cocoon {
+.body-index > h1 {
     font-family: "MakinGlovem";
     font-weight: normal;
     font-size: 5em;

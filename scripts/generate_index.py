@@ -44,9 +44,7 @@ def gen_index_page(files):
 
 
 def gen_header_md():
-    with open("./templates/header.md", 'r') as f:
-        return f.read()
-
+    return ''
 
 def gen_md(file_details: dict):
     return "[**{title}**]({link}) \  <small>{date}</small>".format(title=file_details["title"], link=file_details["uri"], date=file_details["date"])  

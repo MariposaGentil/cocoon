@@ -544,7 +544,7 @@ figcaption {
     color: var(--theme-content-color-lighter);
 }
 
-.body-index > h1 {
+.page-title {
     font-family: "MakinGlovem";
     font-weight: normal;
     font-size: 5em;

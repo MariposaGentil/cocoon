@@ -1,4 +1,5 @@
 site:
-  title: 'cocoon'
+  title: 'Cocoon'
+  description: 'A place where I feel like home...'
   favicon: 'favicon.ico'
   rootpath: '/'

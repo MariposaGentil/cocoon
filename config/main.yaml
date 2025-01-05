@@ -1,5 +1,5 @@
 site:
-  title: 'Cocoon'
-  description: 'A place where I feel like home...'
+  title: 'Cocoon Share Play'
+  description: 'What do we watch today?'
   favicon: 'favicon.ico'
-  rootpath: '/'
+  rootpath: '/subsites/share_play'

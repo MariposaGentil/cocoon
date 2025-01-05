@@ -3,3 +3,5 @@ site/
 root/index.md
 notes/
 .vscode/
+
+*.swp

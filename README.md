@@ -10,17 +10,12 @@ This repo hosts the content for https://mariposagentil.github.io/ each time a ne
 1. `git clone https://github.com/MariposaGentil/cocoon && cd cocoon` this repo
 1. `./scripts/install_requirements.sh`
 
-## Write/Preview
+## Create a new subsite
 
-1. Add content to `./posts`
-1. Add front matter at the beginning of each post:
-    ```
-    % Title
-    % Author (optional, keep '%' even if empty)
-    % Date (YYYY-MM-DD format)
-    ```
-1. `make smart_run`
-    - To also serve drafts in `./drafts`, use `--drafts`
+1. Checkout a new branch, called:
+    - subsite/[subsite_name]
+    - update /config/main.yml
+    - Execute ```$ make clean | make build | make run```
 
 ## Makefile
 Checkout `Makefile` to get a list of the usual tasks

@@ -1,5 +1,5 @@
 site:
-  title: 'Cocoon'
-  description: 'A place where I feel like home...'
-  favicon: 'favicon.ico'
-  rootpath: '/'
+  title: 'Chucha'
+  description: 'A place where we feel like together...'
+  favicon: '/subsites/chucha/favicon.ico'
+  rootpath: '/subsites/chucha'

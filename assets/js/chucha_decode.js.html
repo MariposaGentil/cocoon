@@ -1,0 +1,8 @@
+<script>
+    let encoded_html = ''
+    let input_html = '<div class="form__group field"><input type="input" class="form__field" placeholder="Password" name="Password" id="Password" required /><label for="Password" class="form__label">Password</label></div>';
+    window.addEventListener("load", function () {
+        encoded_html = document.body.innerHTML;
+        document.body.innerHTML = input_html;
+    });
+</script>

@@ -1,6 +1,6 @@
 version:
 	@echo "Bumping cocoons version..."
-	@echo "TODO Task to bump coccon version"
+	@echo "TODO Task to bump cocoon version"
 
 build:
 	@echo "Builing cocoon site..."

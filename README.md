@@ -31,3 +31,10 @@ Checkout `Makefile` to get a list of the usual tasks
     1. This will build and post your changes in the configured HOST
 1. Go to the configured HOST
 
+## NOTES
+
+- We are encoding the contents of index.html using AES and a password 
+- The password should be asked in the landing page
+- Contents should be decrypted with the password and show the content
+- This page should contain a list of photos of my current relationship
+

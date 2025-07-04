@@ -33,7 +33,7 @@ Checkout `Makefile` to get a list of the usual tasks
 
 ## NOTES
 
-- We are encoding the contents of index.html using AES and a password 
+- We are encoding the contents of index.html using AES and a password
 - The password should be asked in the landing page
 - Contents should be decrypted with the password and show the content
 - This page should contain a list of photos of my current relationship

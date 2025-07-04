@@ -67,10 +67,19 @@ do
 		-o "$out_path"_decryp
 
     # Encrypt file
-    openssl enc -aes-256-cbc -salt -in "$out_path"_decryp -out $out_path -pass pass:123
+    openssl enc -aes-256-cbc \
+        -S 0D4DAFDB5DA484A7 \
+        -base64 \
+        -in "$out_path"_decryp \
+        -out $out_path \
+        -pass pass:123 \
+        -iv 01FFE56789AB99DEF0123456789A553E \
+        -iter 10000 \
+        -pbkdf2 \
+        -p
     rm "$out_path"_decryp
-    # https://github.com/mdn/dom-examples/blob/main/web-crypto/encrypt-decrypt/aes-cbc.js\
-    # https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/decrypt
+    
+    echo "<html>$(cat ./assets/js/decode.js.html)<body>$(cat $out_path)</body></html>" > $out_path
 
 done
 

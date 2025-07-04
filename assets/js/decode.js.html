@@ -1,0 +1,136 @@
+<script>
+    let encoded_html = ''
+    let input_html = '<div class="form__group field"><input type="password" class="form__field" placeholder="Password" name="Password" id="Password" required /><button class="pwd_btn">Enter</button></div>';
+    window.addEventListener("DOMContentLoaded", function () {
+        // Convert base64 decoded string to ArrayBuffer
+        const decodedString = atob(document.body.innerHTML);
+        const bytes = new Uint8Array(decodedString.length);
+        for (let i = 0; i < decodedString.length; i++) {
+            bytes[i] = decodedString.charCodeAt(i);
+        }
+        encoded_html = bytes.buffer;
+        document.body.innerHTML = input_html;
+
+        if (!window.crypto || !window.crypto.subtle) {
+            alert("Your browser does not support the Web Cryptography API! This page will not work.");
+            return;
+        }
+
+        // Add click event listener to the button
+        document.querySelector('.pwd_btn').addEventListener('click', function() {
+            const passwordValue = document.getElementById('Password').value;
+            console.log('Password entered:', passwordValue);
+            generateKey(passwordValue).then(({ key, iv }) => {
+                keyToHexString(key).then(hexKey => {
+                    console.log('Key:', hexKey);
+                });
+                console.log('IV as hex:', arrayBufferToHex(iv));
+                console.log('IV:', iv);
+                console.log('Key:', key);
+
+                // Since -S flag was used, encoded_html contains only encrypted data (no salt header)
+                decryptData(key, iv, encoded_html).then(decrypted_html => {
+                    console.log('Decrypted HTML:', decrypted_html);
+                    document.documentElement.innerHTML = decrypted_html;
+                }).catch(err => {
+                    console.error('Decryption failed:', err);
+                });
+            }).catch(err => {
+                console.error('Key generation failed:', err);
+            });
+        });
+    });
+
+    function hexToArrayBuffer(hex) {
+        const bytes = new Uint8Array(hex.length / 2);
+        for (let i = 0; i < hex.length; i += 2) {
+            bytes[i / 2] = parseInt(hex.substr(i, 2), 16);
+        }
+        return bytes.buffer;
+    }
+
+    async function generateKey(password) {
+        const saltHex = "0D4DAFDB5DA484A7";
+        const ivHex = "01FFE56789AB99DEF0123456789A553E";
+        
+        // Convert hex strings to ArrayBuffers
+        const salt = new Uint8Array(hexToArrayBuffer(saltHex));
+        const iv = new Uint8Array(hexToArrayBuffer(ivHex));
+
+        // Import password as key material
+        const keyMaterial = await crypto.subtle.importKey(
+            'raw',
+            new TextEncoder().encode(password),
+            { name: 'PBKDF2' },
+            false,
+            ['deriveBits']
+        );
+
+        // Derive bits using PBKDF2
+        const derivedBits = await crypto.subtle.deriveBits(
+            {
+                name: 'PBKDF2',
+                hash: 'SHA-256',
+                salt: salt,
+                iterations: 10000
+            },
+            keyMaterial,
+            256 // 256 bits for AES-256
+        );
+
+        // Import the derived bits as an AES-CBC key
+        const key = await crypto.subtle.importKey(
+            'raw',
+            derivedBits,
+            { name: 'AES-CBC' },
+            true,
+            ['decrypt']
+        );
+        
+        console.log("Key generated successfully!");
+        return { key, iv };
+    }
+
+    async function keyToHexString(cryptoKey) {
+        const keyBuffer = await crypto.subtle.exportKey('raw', cryptoKey);
+        const keyArray = new Uint8Array(keyBuffer);
+        const hexString = Array.from(keyArray)
+            .map(byte => byte.toString(16).padStart(2, '0'))
+            .join('');
+        return hexString;
+    }
+
+    async function decryptData(key, iv, encoded_data) {
+        try {
+            const decrypted = await crypto.subtle.decrypt(
+                {
+                    name: 'AES-CBC',
+                    iv: iv
+                },
+                key,
+                encoded_data
+            );
+            
+            // Convert ArrayBuffer to string
+            return new TextDecoder().decode(decrypted);
+        } catch (err) {
+            console.error('Decryption error:', err);
+            throw err;
+        }
+    }
+
+    function arrayBufferToHex(buffer) {
+        const bytes = new Uint8Array(buffer);
+        return Array.from(bytes)
+            .map(byte => byte.toString(16).padStart(2, '0'))
+            .join('');
+    }
+
+</script>
+
+<!-- 
+KEY TO MATCH IS 27C21E3A4F2DD27EA94AD04B65276401A2553B2639D4B0B67C8FFAC2DD6FC6A1
+IV  = 01FFE56789AB99DEF0123456789A553E
+SALT = 0D4DAFDB5DA484A7
+PASS = pass:123
+-->

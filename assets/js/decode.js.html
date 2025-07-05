@@ -1,6 +1,6 @@
 <script>
     let encoded_html = ''
-    let input_html = '<div class="form__group field"><input type="password" class="form__field" placeholder="Password" name="Password" id="Password" required /><button class="pwd_btn">Enter</button></div>';
+    let input_html = '<div class="form__group field"><input type="password" class="form__field" placeholder="Password" name="password" id="Password" required /><label for="password" class="form__label">Password</label></div>';
     window.addEventListener("DOMContentLoaded", function () {
         // Convert base64 decoded string to ArrayBuffer
         const decodedString = atob(document.body.innerHTML);
@@ -17,7 +17,10 @@
         }
 
         // Add click event listener to the button
-        document.querySelector('.pwd_btn').addEventListener('click', function() {
+        document.getElementById('Password').addEventListener('keyup', function() {
+            if (event.key !== 'Enter') {
+                return; // Only proceed if Enter key is pressed
+            }
             const passwordValue = document.getElementById('Password').value;
             console.log('Password entered:', passwordValue);
             generateKey(passwordValue).then(({ key, iv }) => {
@@ -122,10 +125,3 @@
     }
 
 </script>
-
-<!-- 
-KEY TO MATCH IS 27C21E3A4F2DD27EA94AD04B65276401A2553B2639D4B0B67C8FFAC2DD6FC6A1
-IV  = 01FFE56789AB99DEF0123456789A553E
-SALT = 0D4DAFDB5DA484A7
-PASS = pass:123
--->

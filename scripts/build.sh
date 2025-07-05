@@ -79,6 +79,6 @@ do
         -p
     rm "$out_path"_decryp
     
-    echo "<html>$(cat ./assets/js/decode.js.html)<body>$(cat $out_path)</body></html>" > $out_path
+    echo "<html>$(cat ./assets/js/decode.js.html)<style>$(cat ./assets/css/password_input.css)</style><body>$(cat $out_path)</body></html>" > $out_path
 
 done

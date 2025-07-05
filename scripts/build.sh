@@ -82,4 +82,3 @@ do
     echo "<html>$(cat ./assets/js/decode.js.html)<body>$(cat $out_path)</body></html>" > $out_path
 
 done
-

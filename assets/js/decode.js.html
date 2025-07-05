@@ -21,17 +21,12 @@
             const passwordValue = document.getElementById('Password').value;
             console.log('Password entered:', passwordValue);
             generateKey(passwordValue).then(({ key, iv }) => {
-                keyToHexString(key).then(hexKey => {
-                    console.log('Key:', hexKey);
-                });
-                console.log('IV as hex:', arrayBufferToHex(iv));
-                console.log('IV:', iv);
-                console.log('Key:', key);
-
                 // Since -S flag was used, encoded_html contains only encrypted data (no salt header)
                 decryptData(key, iv, encoded_html).then(decrypted_html => {
                     console.log('Decrypted HTML:', decrypted_html);
-                    document.documentElement.innerHTML = decrypted_html;
+                    document.open();
+                    document.write(decrypted_html);
+                    document.close();
                 }).catch(err => {
                     console.error('Decryption failed:', err);
                 });

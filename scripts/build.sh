@@ -8,6 +8,10 @@ mkdir -p $site_path
 subsite_forder="/"
 settings="$(./scripts/load_yaml_settings.sh)"
 
+IVS=$(yq '.build.ivs' < config/main.yaml)
+SALT=$(yq '.build.salt' < config/main.yaml)
+PASSWORD=$(yq '.build.password' < config/main.yaml)
+
 
 # Parse args
 
@@ -68,17 +72,23 @@ do
 
     # Encrypt file
     openssl enc -aes-256-cbc \
-        -S 0D4DAFDB5DA484A7 \
+        -S ${SALT} \
         -base64 \
         -in "$out_path"_decryp \
         -out $out_path \
-        -pass pass:123 \
-        -iv 01FFE56789AB99DEF0123456789A553E \
+        -pass pass:${PASSWORD} \
+        -iv ${IVS} \
         -iter 10000 \
         -pbkdf2 \
         -p
     rm "$out_path"_decryp
-    
-    echo "<html>$(cat ./assets/js/decode.js.html)<style>$(cat ./assets/css/password_input.css)</style><body>$(cat $out_path)</body></html>" > $out_path
+
+    encrypted_file=$(cat $out_path)
+    echo "<html>" > $out_path
+    echo "<script>const IVS = '${IVS}'; const SALT = '${SALT}';</script>" >> $out_path
+    echo "$(cat ./assets/js/decode.js.html)" >> $out_path
+    echo "<style>$(cat ./assets/css/password_input.css)</style>" >> $out_path
+    echo "<body>${encrypted_file}</body>" >> $out_path
+    echo "</html>" >> $out_path
 
 done

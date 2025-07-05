@@ -3,3 +3,9 @@ site:
   description: 'A place where we feel like together...'
   favicon: '/subsites/chucha/favicon.ico'
   rootpath: '/subsites/chucha'
+
+build:
+  encode: true
+  ivs: 01FFE56789AB99DEF0123456789A553E
+  salt: 0D4DAFDB5DA484A7
+  password: 123

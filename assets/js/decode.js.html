@@ -18,26 +18,29 @@
 
         // Add click event listener to the button
         document.getElementById('Password').addEventListener('keyup', function() {
-            if (event.key !== 'Enter') {
-                return; // Only proceed if Enter key is pressed
-            }
-            const passwordValue = document.getElementById('Password').value;
-            console.log('Password entered:', passwordValue);
-            generateKey(passwordValue).then(({ key, iv }) => {
-                // Since -S flag was used, encoded_html contains only encrypted data (no salt header)
-                decryptData(key, iv, encoded_html).then(decrypted_html => {
-                    console.log('Decrypted HTML:', decrypted_html);
-                    document.open();
-                    document.write(decrypted_html);
-                    document.close();
-                }).catch(err => {
-                    console.error('Decryption failed:', err);
-                });
-            }).catch(err => {
-                console.error('Key generation failed:', err);
-            });
+            tryDecrypt(event);
         });
     });
+
+    function tryDecrypt(event) {
+        if (event.key !== 'Enter') {
+            return; // Only proceed if Enter key is pressed
+        }
+        const passwordValue = document.getElementById('Password').value;
+        generateKey(passwordValue).then(({ key, iv }) => {
+            // Since -S flag was used, encoded_html contains only encrypted data (no salt header)
+            decryptData(key, iv, encoded_html).then(decrypted_html => {
+                console.log('Decrypted HTML:', decrypted_html);
+                document.open();
+                document.write(decrypted_html);
+                document.close();
+            }).catch(err => {
+                console.error('Decryption failed:', err);
+            });
+        }).catch(err => {
+            console.error('Key generation failed:', err);
+        });
+    };
 
     function hexToArrayBuffer(hex) {
         const bytes = new Uint8Array(hex.length / 2);
@@ -48,12 +51,9 @@
     }
 
     async function generateKey(password) {
-        const saltHex = "0D4DAFDB5DA484A7";
-        const ivHex = "01FFE56789AB99DEF0123456789A553E";
-        
         // Convert hex strings to ArrayBuffers
-        const salt = new Uint8Array(hexToArrayBuffer(saltHex));
-        const iv = new Uint8Array(hexToArrayBuffer(ivHex));
+        const salt = new Uint8Array(hexToArrayBuffer(SALT));
+        const iv = new Uint8Array(hexToArrayBuffer(IVS));
 
         // Import password as key material
         const keyMaterial = await crypto.subtle.importKey(

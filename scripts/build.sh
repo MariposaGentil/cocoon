@@ -13,18 +13,6 @@ SALT=$(yq '.build.salt' < config/main.yaml)
 PASSWORD=$(yq '.build.password' < config/main.yaml)
 
 
-# Parse args
-
-if [ -n ${1} ]
-then
-    # Check for --drafts
-	if [ "${1}" = "--drafts" ]
-	then
-		drafts=true
-		py_draft_arg=${1}
-	fi
-fi
-
 if [ $branch ]
 then
 	if [ $branch != "master" ]
@@ -36,7 +24,7 @@ fi
 
 # Generate index.md
 
-python3 ./scripts/generate_index.py ${py_draft_arg} > ./root/index.md
+python3 ./scripts/generate_index.py > ./root/index.md
 
 root_md_files=$(find ./root -maxdepth 1 -type f -name "*.md")
 
@@ -60,8 +48,8 @@ do
 	xargs pandoc \
 		--template=./templates/index.html5 \
 		--standalone \
-		--metadata pagetitle="Cocoon" \
-		--css=$subsite_folder/assets/css/styling.max.css \
+		--metadata pagetitle="Chucha" \
+		--css=$subsite_folder/assets/css/chucha.css \
 		-H ./assets/js/cocoon.js.html \
 		-H ./assets/html/root_header.html5 \
 		-V lang=en \
@@ -81,7 +69,7 @@ do
         -iter 10000 \
         -pbkdf2 \
         -p
-    rm "$out_path"_decryp
+    #rm "$out_path"_decryp
 
     encrypted_file=$(cat $out_path)
     echo "<html>" > $out_path

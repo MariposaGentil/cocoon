@@ -1,5 +1,5 @@
 site:
-  title: 'Chucha'
+  title: 'Example Subsite'
   description: 'A place where we feel like together...'
   favicon: '/subsites/chucha/favicon.ico'
   rootpath: '/subsites/chucha'

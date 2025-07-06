@@ -43,6 +43,7 @@
                 document.close();
             }).catch(err => {
                 console.error('Decryption failed:', err);
+                document.getElementById('password_error').textContent = 'Incorrect password, please try again.';
             });
         }).catch(err => {
             console.error('Key generation failed:', err);

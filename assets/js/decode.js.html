@@ -1,26 +1,33 @@
 <script>
     let encoded_html = ''
-    let input_html = '<div class="form__group field"><input type="password" class="form__field" placeholder="Password" name="password" id="Password" required /><label for="password" class="form__label">Password</label></div>';
+    //let input_html = '<div class="form__group field"><input type="password" class="form__field" placeholder="Password" name="password" id="Password" required /><label for="password" class="form__label">Password</label></div>';
+    
     window.addEventListener("DOMContentLoaded", function () {
-        // Convert base64 decoded string to ArrayBuffer
-        const decodedString = atob(document.body.innerHTML);
-        const bytes = new Uint8Array(decodedString.length);
-        for (let i = 0; i < decodedString.length; i++) {
-            bytes[i] = decodedString.charCodeAt(i);
+        const encoded_b64 = atob(document.body.innerHTML);
+        const bytes = new Uint8Array(encoded_b64.length);
+        for (let i = 0; i < encoded_b64.length; i++) {
+            bytes[i] = encoded_b64.charCodeAt(i);
         }
+
         encoded_html = bytes.buffer;
-        document.body.innerHTML = input_html;
+        get_input_html().then(html => {
+            document.body.innerHTML = html; // Append the input HTML to the body
+            // Add click event listener to the button
+            document.getElementById('Password').addEventListener('keyup', function() {
+                tryDecrypt(event);
+            });
+        });
 
         if (!window.crypto || !window.crypto.subtle) {
             alert("Your browser does not support the Web Cryptography API! This page will not work.");
             return;
         }
-
-        // Add click event listener to the button
-        document.getElementById('Password').addEventListener('keyup', function() {
-            tryDecrypt(event);
-        });
     });
+
+    async function get_input_html() {
+        input_html = await fetch('./assets/html/password_input.html').then(response => response.text());
+        return input_html;
+    }
 
     function tryDecrypt(event) {
         if (event.key !== 'Enter') {
@@ -33,6 +40,7 @@
                 console.log('Decrypted HTML:', decrypted_html);
                 document.open();
                 document.write(decrypted_html);
+                sleep(1000).then(() => {document.close();});
                 document.close();
             }).catch(err => {
                 console.error('Decryption failed:', err);
@@ -122,6 +130,10 @@
         return Array.from(bytes)
             .map(byte => byte.toString(16).padStart(2, '0'))
             .join('');
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
 </script>

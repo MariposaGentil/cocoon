@@ -3,6 +3,7 @@
     
     window.addEventListener("DOMContentLoaded", function () {
         const encoded_b64 = atob(document.body.innerHTML);
+        document.body.innerHTML = ''; // Clear the body content
         const bytes = new Uint8Array(encoded_b64.length);
         for (let i = 0; i < encoded_b64.length; i++) {
             bytes[i] = encoded_b64.charCodeAt(i);
